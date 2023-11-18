@@ -1,3 +1,9 @@
+
+/**
+* Name: group 3 
+* Date: 17th November 2023
+* Description: assests for users 
+ */
 const express = require("express");
 const router = express.Router();
 const imageRegex = /\/.+\.(svg|png|jpg|png|jpeg)$/; // You can add other image formats

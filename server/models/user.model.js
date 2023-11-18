@@ -1,3 +1,8 @@
+/**
+* Name: group 3 
+* Date: 17th November 2023
+* Description: model for users 
+ */
 import mongoose from 'mongoose'
 const UserSchema = new mongoose.Schema({
  name: {
@@ -43,8 +48,6 @@ UserSchema.path('hashed_password').validate(function(v) {
 this.invalidate('password', 'Password is required');
  }
 }, null);
-
-
 UserSchema.methods = {
 authenticate: function(plainText) {
 return this.encryptPassword(plainText) === this.hashed_password 
@@ -65,5 +68,4 @@ makeSalt: function() {
 return Math.round((new Date().valueOf() * Math.random())) + '' 
 }
 }
-
 export default mongoose.model('User', UserSchema);

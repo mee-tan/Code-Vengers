@@ -1,3 +1,9 @@
+/**
+* Name: group 3 
+* Date: 17th November 2023
+* Description: controll authorization for users 
+ */
+
 import User from '../models/user.model.js'
 import jwt from 'jsonwebtoken'
 //import expressJwt from 'express-jwt'

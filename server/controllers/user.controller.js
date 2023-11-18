@@ -1,6 +1,6 @@
 /**
-* Name: Misha Mansoor
-* Date: 15th October 2023
+* Name: group 3 
+* Date: 17th November 2023
 * Description: controller for users 
  */
 import User from '../models/user.model.js'

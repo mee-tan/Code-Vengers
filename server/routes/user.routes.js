@@ -1,3 +1,8 @@
+/**
+* Name: group 3 
+* Date: 17th November 2023
+* Description: routes for users 
+ */
 import express from 'express'
 import userCtrl from '../controllers/user.controller.js' 
 import authCtrl from '../controllers/auth.controller.js'

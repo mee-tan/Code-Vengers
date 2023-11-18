@@ -1,3 +1,9 @@
+/**
+* Name: group 3 
+* Date: 17th November 2023
+* Description: express.js file for all the necessary modules
+ */
+
 import express from 'express'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
