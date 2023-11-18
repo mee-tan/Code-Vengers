@@ -1,4 +1,6 @@
 import mongoose from 'mongoose'
+import crypto from 'crypto';
+
 const UserSchema = new mongoose.Schema({
  name: {
  type: String,
@@ -47,13 +49,15 @@ this.invalidate('password', 'Password is required');
 
 UserSchema.methods = {
 authenticate: function(plainText) {
-return this.encryptPassword(plainText) === this.hashed_password 
+  console.log('encrypted',this.encryptPassword(plainText), 
+  'hashed', this.hashed_password)
+return plainText === this.hashed_password 
 },
 encryptPassword: function(password) { 
 if (!password) return ''
 try {
 return crypto
-.createHmac('sha1', this.salt) 
+.createHmac('sha1', this.makeSalt()) 
 .update(password)
 .digest('hex') 
 } catch (err) {
