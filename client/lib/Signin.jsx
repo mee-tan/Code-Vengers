@@ -8,9 +8,9 @@ import Typography from '@material-ui/core/Typography'
 import Icon from '@material-ui/core/Icon'
 import { makeStyles } from '@material-ui/core/styles'
 import auth from './auth-helper.js'
-import {Navigate} from 'react-router-dom'
-import { useLocation } from 'react-router-dom';
-import {signin} from './api-auth.js'
+import { Navigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { signin } from './api-auth.js'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -56,14 +56,9 @@ export default function Signin(props) {
     }
 console.log(user)
     signin(user).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error})
-      } else {
-        console.log(data)
-        auth.authenticate(data, () => {
-          setValues({ ...values, error: '',redirectToReferrer: true})
-        })
-      }
+      auth.authenticate(data, () => {
+        setValues({ ...values, error: '',redirectToReferrer: true})
+      })
     })
   }
 

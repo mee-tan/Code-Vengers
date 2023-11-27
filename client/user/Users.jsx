@@ -55,7 +55,6 @@ useEffect(() => {
 if (data && data.error) { 
 console.log(data.error)
 } else { 
-    console.log(data)
 setUsers(data)
 } 
 })
