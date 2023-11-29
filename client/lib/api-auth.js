@@ -1,6 +1,9 @@
+const serverUrl = 'http://localhost:3000';
+
+
 const signin = async (user) => { 
 try {
-let response = await fetch('/auth/signin/', { 
+let response = await fetch( serverUrl + '/signin/', { 
 method: 'POST',
 headers: {
 'Accept': 'application/json',
@@ -16,7 +19,7 @@ console.log(err)
 }
 const signout = async () => { 
 try {
-let response = await fetch('/auth/signout/', { method: 'GET' }) 
+let response = await fetch( serverUrl + '/signout/', { method: 'GET' }) 
 return await response.json()
 } catch(err) { 
 console.log(err)

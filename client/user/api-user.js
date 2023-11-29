@@ -1,6 +1,9 @@
+const serverUrl = 'http://localhost:3000';
+
+
 const create = async (user) => { 
 try {
-let response = await fetch('/api/users/', { 
+let response = await fetch(serverUrl + '/api/users/', { 
 method: 'POST',
 headers: {
 'Accept': 'application/json',
@@ -13,6 +16,7 @@ return await response.json()
 console.log(err) 
 }
 }
+
 const list = async (signal) => { 
 try {
 let response = await fetch('/api/users/', { 
@@ -25,9 +29,10 @@ return await response.json()
 console.log(err) 
 }
 }
+
 const read = async (params, credentials, signal) => { 
 try {
-let response = await fetch('/api/users/' + params.userId, { 
+let response = await fetch( serverUrl + '/api/users/' + params.userId, { 
 method: 'GET',
 signal: signal, 
 headers: {
@@ -41,6 +46,7 @@ return await response.json()
 console.log(err) 
 }
 }
+
 const update = async (params, credentials, user) => { 
 try {
 let response = await fetch('/api/users/' + params.userId, { 
@@ -57,6 +63,7 @@ return await response.json()
 console.log(err) 
 }
 }
+
 const remove = async (params, credentials) => { 
 try {
 let response = await fetch('/api/users/' + params.userId, { 
@@ -72,4 +79,5 @@ return await response.json()
 console.log(err) 
 }
 }
+
 export { create, list, read, update, remove }

@@ -51,7 +51,7 @@ return (
   <Typography variant="body2"  className= {classes.h1} component="h1"> 
     Welcome to the Code Vengers Online Marketplace
   </Typography> 
-  <Typography variant= "bod1" className= {classes.paragraph}component="p">
+  <Typography variant= "body1" className= {classes.paragraph}component="p">
   <br/>
     Build your tech career
     With CodeVengers plans, you can achieve your school project or career goals. sign up today and join our team

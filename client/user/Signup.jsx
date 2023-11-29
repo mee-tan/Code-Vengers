@@ -50,6 +50,7 @@ export default function Signup() {
     setValues({ ...values, [name]: event.target.value });
   };
 
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -61,12 +62,17 @@ export default function Signup() {
       password: values.password || undefined,
     };
 
+  //   create(user).then((data) => { 
+  //     if (data.error) {
+  //       setValues({ ...values, error: data.error });
+  //     } else {
+  //       setOpen(true);
+  //     }
+  //   });
+  // }
+  
     create(user).then((data) => { 
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
-        setOpen(true);
-      }
+      setOpen(true)
     });
   };
 
