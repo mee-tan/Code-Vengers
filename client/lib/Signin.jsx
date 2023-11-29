@@ -56,6 +56,8 @@ export default function Signin(props) {
     }
 console.log(user)
     signin(user).then((data) => {
+
+      console.log(data)
       auth.authenticate(data, () => {
         setValues({ ...values, error: '',redirectToReferrer: true})
       })

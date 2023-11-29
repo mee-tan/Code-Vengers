@@ -25,6 +25,8 @@ import Typography from '@material-ui/core/Typography'
 import ArrowForward from '@material-ui/icons/ArrowForward';
 import codevengersimg from './../assets/images/codevengersimg.png'
 
+const serverUrl = 'http://localhost:3000';
+
 const useStyles = makeStyles(theme => ({
     card: {
       // Define your card styles here
@@ -72,7 +74,7 @@ All Users
 </Typography> 
 <List dense>
 {users.map((item, i) => {
-    return  <Link component={RouterLink} to={"/user/" + item._id} key={i}>
+    return  <Link component={RouterLink} to={serverUrl + "/user/" + item._id} key={i}>
     
 <ListItem button> 
 <ListItemAvatar>
