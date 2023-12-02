@@ -1,8 +1,3 @@
-/**
-* Name: group 3 
-* Date: 17th November 2023
-* Description: express.js file for all the necessary modules
- */
 import express from 'express'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
@@ -12,7 +7,11 @@ import helmet from 'helmet'
 import Template from './../template.js'
 import userRoutes from './routes/user.routes.js'
 import authRoutes from './routes/auth.routes.js'
+//import devBundle from './devBundle' 
+import path from 'path'
+
 const app = express()
+const CURRENT_WORKING_DIR = process.cwd()
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/', userRoutes)
@@ -29,8 +28,6 @@ res.status(401).json({"error" : err.name + ": " + err.message})
 }else if (err) {
 res.status(400).json({"error" : err.name + ": " + err.message}) 
 console.log(err)
-
-console.log(res);
 } 
 })
 export default app

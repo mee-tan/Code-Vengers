@@ -34,8 +34,8 @@ return await response.json()
 console.log(err) 
 return {error: "error finding users"};
 }
-};
 
+};
 const read = async (params, credentials, signal) => { 
 try {
 let response = await fetch('/api/users/' + params.userId, { 
@@ -52,6 +52,7 @@ return await response.json()
 console.log(err) 
 }
 }
+
 const update = async (params, credentials, user) => { 
 try {
 let response = await fetch('/api/users/' + params.userId, { 
@@ -68,6 +69,7 @@ return await response.json()
 console.log(err) 
 }
 }
+
 const remove = async (params, credentials) => { 
 try {
 let response = await fetch('/api/users/' + params.userId, { 
@@ -83,4 +85,5 @@ return await response.json()
 console.log(err) 
 }
 }
+
 export { create, list, read, update, remove }
