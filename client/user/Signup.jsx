@@ -31,13 +31,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-// const create = async (user) => {
-//   return { error: null }; // Simulated API call
-// };
-
 export default function Signup() {
   const classes = useStyles();
-
+  const [error, setError] = useState('');
   const [values, setValues] = useState({ 
     name: '',
     password: '', 
@@ -60,7 +56,7 @@ export default function Signup() {
       email: values.email || undefined, 
       password: values.password || undefined,
     };
-
+    
     create(user).then((data) => { 
       if (data.error) {
         setValues({ ...values, error: data.error });
@@ -114,6 +110,7 @@ export default function Signup() {
             className={classes.submit}>
             Submit
           </Button>
+          {error && <Typography className={classes.error}>{error}</Typography>}
         </CardActions> 
       </Card>
 

@@ -5,7 +5,6 @@
  */
 import mongoose from 'mongoose'
 import crypto from 'crypto';
-
 const UserSchema = new mongoose.Schema({
  name: {
  type: String,
@@ -18,11 +17,11 @@ const UserSchema = new mongoose.Schema({
 unique: 'Email Address already exists',
 match: [/.+\@.+\..+/, 'Please enter a valid email address'],
 required: 'Email Address is required'
- },
+},
  created: {
 type: Date,
 default: Date.now
-   },
+},
  updated: {
 type: Date,
 default: Date.now
@@ -31,7 +30,7 @@ hashed_password: {
 type: String,
 required: 'Password is required'
 },
- salt: String
+salt: String
 });
 UserSchema.virtual('password')
  .set(function(password) {

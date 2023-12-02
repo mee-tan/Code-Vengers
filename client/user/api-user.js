@@ -1,30 +1,41 @@
 const create = async (user) => { 
 try {
-let response = await fetch('/api/users/', { 
+let response = await fetch('/api/users/', {
 method: 'POST',
 headers: {
 'Accept': 'application/json',
 'Content-Type': 'application/json' 
 },
-body: JSON.stringify(user) 
-})
+    body: JSON.stringify(user) 
+});
+
+if (!response.ok) {
+    throw new Error("Network issue ${response.statusText}`");
+}
 return await response.json() 
 } catch(err) {
-console.log(err) 
+    console.log(err) 
+    return {error: "error creating users"};
 }
-}
+};
+
 const list = async (signal) => { 
 try {
-let response = await fetch('/api/users/', { 
+let response = await fetch('api/users/', { 
 method: 'GET',
-
 signal: signal, 
-})
+});
+if (!response.ok) {
+    throw new Error("Network issue");
+}
+
 return await response.json() 
 } catch(err) {
 console.log(err) 
+return {error: "error finding users"};
 }
-}
+};
+
 const read = async (params, credentials, signal) => { 
 try {
 let response = await fetch('/api/users/' + params.userId, { 

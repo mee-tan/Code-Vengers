@@ -27,6 +27,11 @@ const styles = {
   color:'black',
 };
 
+const signOut = {
+  fontFamily : 'Oswald',
+  color: 'blue',
+}
+
 const fonts = {
   fontFamily: 'Oswald, sans-serif',
   color:'black',
@@ -90,9 +95,7 @@ export default function Menu() {
                 <Button style={{ ...isActive('/users'), ...fonts }}>Users</Button>
               </Link>
             </Hidden>
-          </>
-        )}
-        {!auth.isAuthenticated() && (
+            {!auth.isAuthenticated() && (
           <Hidden xsDown>
             <span>
               <Link to="/signin">
@@ -108,12 +111,11 @@ export default function Menu() {
           <Hidden xsDown>
             <span>
               <Link to={`/user/${auth.isAuthenticated().user._id}`}>
-                <Button style={isActive(location, `/user/${auth.isAuthenticated().user._id}`)}>
-                  My Profile
-                </Button>
+                <Button style={isActive(location, `/user/${auth.isAuthenticated().user._id}`)}> My Profile</Button>
               </Link>
               <Button
                 color="inherit"
+                style={signOut}
                 onClick={() => {
                   auth.clearJWT(() => navigate('/'));
                 }}
@@ -122,6 +124,8 @@ export default function Menu() {
               </Button>
             </span>
           </Hidden>
+        )}
+          </>
         )}
       </Toolbar>
     </AppBar>

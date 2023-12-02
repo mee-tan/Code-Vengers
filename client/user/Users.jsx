@@ -23,7 +23,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 //import ArrowForward from '@material-ui/core/ArrowForward'
 import ArrowForward from '@material-ui/icons/ArrowForward';
-import codevengersimg from './../assets/images/codevengersimg.png'
+//import unicornbikeImg from './../assets/images/unicornbikeImg.jpg'
 
 const useStyles = makeStyles(theme => ({
     card: {
