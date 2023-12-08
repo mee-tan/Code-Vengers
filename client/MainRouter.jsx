@@ -10,9 +10,6 @@ import Profile from './user/Profile.jsx'
 import Switch from 'react'
 import PrivateRoute from './lib/PrivateRoute.jsx'
 import EditProfile from './user/EditProfile.jsx'
-import NewProduct from './product/NewProduct'
-import EditProduct from './product/EditProduct'
-import Product from './product/Product'
 import Menu from './core/Menu' 
 function MainRouter() {
         return (
@@ -35,10 +32,6 @@ function MainRouter() {
     }
   />
   <Route path="/user/:userId" element={<Profile />} />
-
-  <Route path="/product/:productId" component={Product}/>
-  <Route path="/shops/all" component={Shops}/>
-  <Route path="/shops/:shopId" component={Shop}/>
 
 </Routes>
 </div>
