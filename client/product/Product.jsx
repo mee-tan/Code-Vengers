@@ -9,7 +9,7 @@ import {makeStyles} from '@material-ui/core/styles'
 import {read, listRelated} from './api-product.js'
 import {Link} from 'react-router-dom'
 import Suggestions from './Suggestions'
-//import AddToCart from './../cart/AddToCart'
+import AddToCart from './../cart/AddToCart'
 
 const useStyles = makeStyles(theme => ({
   root: {
