@@ -7,7 +7,6 @@ import config from '../config/config.js'
 
 const { PORT = config.port } = process.env;
 
-console.log(config.baseURL);
 // https://vitejs.dev/config/
 export default defineConfig({
   base: './',
