@@ -3,9 +3,11 @@ dotenv.config();
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import config from '../config/config.js' 
 
-const { PORT = 3000 } = process.env;
+const { PORT = config.port } = process.env;
 
+console.log(config.baseURL);
 // https://vitejs.dev/config/
 export default defineConfig({
   base: './',
@@ -13,11 +15,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: `http://localhost:${PORT}`,
+        target: `http://${config.baseURL}:${PORT}`,
         changeOrigin: true,
       },
       '/auth': {
-        target: `http://localhost:${PORT}`,
+        target: `${config.baseURL}:${PORT}`,
         changeOrigin: true,
       },
      

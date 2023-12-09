@@ -16,7 +16,7 @@ throw new Error(`unable to connect to database: ${config.mongoUri}`)
 /* app.get("/", (req, res) => {
 res.json({ message: "Welcome to Code Vengers application." });
 }); */
-app.listen(config.port, (err) => { 
+app.listen(config.port, config.baseURL,(err) => { 
 if (err) {
 console.log(err) 
 }
