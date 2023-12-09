@@ -1,4 +1,5 @@
 import queryString from 'query-string'
+//const queryString = require('query-string');
 const create = async (params, credentials, product) => {
   try {
     let response = await fetch('/api/products/by/'+ params.shopId, {

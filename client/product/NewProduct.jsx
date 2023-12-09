@@ -5,12 +5,12 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import FileUpload from '@material-ui/icons/AddPhotoAlternate'
-import auth from './../auth/auth-helper'
+import auth from './../lib/auth-helper'
 import Typography from '@material-ui/core/Typography'
 import Icon from '@material-ui/core/Icon'
 import { makeStyles } from '@material-ui/core/styles'
 import {create} from './api-product.js'
-import {Link, Redirect} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -87,7 +87,7 @@ export default function NewProduct({match}) {
   }
 
     if (values.redirect) {
-      return (<Redirect to={'/seller/shop/edit/'+match.params.shopId}/>)
+      return (<Navigate to={'/seller/shop/edit/'+match.params.shopId}/>)
     }
     return (<div>
       <Card className={classes.card}>

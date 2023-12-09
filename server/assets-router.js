@@ -6,7 +6,7 @@
  */
 const express = require("express");
 const router = express.Router();
-const imageRegex = /\/.+\.(svg|png|jpg|png|jpeg)$/; // You can add other image formats
+const imageRegex = /\/.+\.(svg|png|jpg|png|jpeg)$/;
 const videoRegex = /\/.+\.(mp4|ogv)$/
 router.get(imageRegex, (req, res) => {
   const filePath = req.path;

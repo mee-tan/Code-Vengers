@@ -7,12 +7,12 @@ import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 import Icon from '@material-ui/core/Icon'
 import Avatar from '@material-ui/core/Avatar'
-import auth from './../auth/auth-helper'
+import auth from './../lib/auth-helper'
 import FileUpload from '@material-ui/icons/AddPhotoAlternate'
 import { makeStyles } from '@material-ui/core/styles'
 import {withStyles} from '@material-ui/core/styles'
 import {read, update} from './api-product.js'
-import {Link, Redirect} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -115,7 +115,7 @@ export default function EditProduct ({match}) {
           ? `/api/product/image/${values.id}?${new Date().getTime()}`
           : '/api/product/defaultphoto'
     if (values.redirect) {
-      return (<Redirect to={'/seller/shop/edit/'+match.params.shopId}/>)
+      return (<Navigate to={'/seller/shop/edit/'+match.params.shopId}/>)
     }
     return (<div>
       <Card className={classes.card}>
