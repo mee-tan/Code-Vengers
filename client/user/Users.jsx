@@ -26,14 +26,6 @@ import ArrowForward from '@material-ui/icons/ArrowForward';
 import homeimg from './../assets/images/home.jpg';
 
 const useStyles = makeStyles(theme => ({
-    root: {
-      backgroundImage: `url(${homeimg})`,
-      backgroundSize: 'cover',
-      minHeight: '100vh',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
     card: {
       maxWidth: 700,
       margin: 'auto',

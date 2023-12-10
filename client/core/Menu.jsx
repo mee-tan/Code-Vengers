@@ -126,6 +126,15 @@ export default function Menu() {
               <Link to={`/user/${auth.isAuthenticated().user._id}`}>
                 <Button style={isActive(location, `/user/${auth.isAuthenticated().user._id}`)}> My Profile</Button>
               </Link>
+              
+              <Link to="/product">
+                <Button style={{...isActive('/products'), ...signup}}> Products</Button>
+              </Link>  
+              
+              <Link to="/products">
+                <Button style={{ ...isActive('/products'), ...fonts }}>Our Products</Button>
+              </Link>    
+              
               <Button
                 color="inherit"
                 style={signOut}
@@ -134,7 +143,7 @@ export default function Menu() {
                 }}
               >
                 Sign out
-              </Button>
+              </Button>        
             </span>
           </Hidden>
         )}

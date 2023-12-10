@@ -1,19 +1,24 @@
 import queryString from 'query-string'
-const create = async (params, credentials, product) => {
+const createProduct = async (user) => { 
   try {
-    let response = await fetch('/api/products/by/'+ params.shopId, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + credentials.t
-        },
-        body: product
-      })
-      return response.json()
-    }catch(err) {
-      console.log(err)
-    }
-}
+  let response = await fetch('/api/products/', {
+  method: 'POST',
+  headers: {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json' 
+  },
+      body: JSON.stringify(user) 
+  });
+  
+  if (!response.ok) {
+      throw new Error("Network issue ${response.statusText}`");
+  }
+  return await response.json() 
+  } catch(err) {
+      console.log(err) 
+      return {error: "error creating products"};
+  }
+  };
 
 const read = async (params, signal) => {
   try {
@@ -58,75 +63,27 @@ const remove = async (params, credentials) => {
     console.log(err)
   }
 }
-
-const listByShop = async (params, signal) => {
+const list = async (signal) => { 
   try {
-    let response = await fetch('/api/products/by/'+params.shopId, {
-      method: 'GET',
-      signal: signal
-    })
-    return response.json()
+  let response = await fetch('api/products/', { 
+  method: 'GET',
+  signal: signal, 
+  });
+  if (!response.ok) {
+      throw new Error("Network issue");
+  }
+  
+  return await response.json() 
   } catch(err) {
-    console.log(err)
+  console.log(err) 
+  return {error: "error finding users"};
   }
-}
-
-const listLatest = async (signal) => {
-  try {
-    let response = await fetch('/api/products/latest', {
-      method: 'GET',
-      signal: signal
-    })
-    return response.json()
-  } catch(err) {
-    console.log(err)
-  }
-}
-
-const listRelated = async (params, signal) => {
-  try {
-    let response = await fetch('/api/products/related/'+params.productId, {
-    method: 'GET',
-    signal: signal
-  })
-    return response.json()
-  }catch(err) {
-  console.log(err)  
-  }
-}
-
-const listCategories = async (signal) => {
-  try {
-    let response = await fetch('/api/products/categories', {
-      method: 'GET',
-      signal: signal
-    })
-    return response.json()
-  } catch(err) {
-    console.log(err)
-  }
-}
-
-const list = async (params, signal) => {
-  const query = queryString.stringify(params)
-  try {
-    let response = await fetch('/api/products?'+query, {
-      method: 'GET',
-    })
-    return response.json()
-  }catch(err) {
-    console.log(err)
-  }
-}
-
+  
+  };
 export {
-  create,
+  createProduct,
   read,
   update,
   remove,
-  listByShop,
-  listLatest,
-  listRelated,
-  listCategories,
   list
 }

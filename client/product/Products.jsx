@@ -1,78 +1,86 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import {makeStyles} from '@material-ui/core/styles'
+import {useState} from 'react'
+import {useEffect} from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import List from '@material-ui/core/List'
+import {list} from './api-product.js'
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
+import IconButton from '@material-ui/core/IconButton'
+import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
-import GridList from '@material-ui/core/GridList'
-import GridListTile from '@material-ui/core/GridListTile'
-import GridListTileBar from '@material-ui/core/GridListTileBar'
-import {Link} from 'react-router-dom'
-//import AddToCart from './../cart/AddToCart'
+import ArrowForward from '@material-ui/icons/ArrowForward';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    background: theme.palette.background.paper,
-    textAlign: 'left',
-    padding: '0 8px'
+const useStyles = makeStyles((theme) => ({
+  card: {
+    maxWidth: 700,
+    margin: 'auto',
+    marginTop: theme.spacing(5),
+    color: '#444444',
+    backgroundColor: '#D9D9D6',
   },
-  container: {
-    minWidth: '100%',
-    paddingBottom: '14px'
-  },
-  gridList: {
-    width: '100%',
-    minHeight: 200,
-    padding: '16px 0 10px'
-  },
+  textField: {},
+  error: {},
+  submit: {},
   title: {
-    padding:`${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(2)}px`,
-    color: theme.palette.openTitle,
-    width: '100%'
+    fontSize: 18,
+    fontFamily: 'Oswald, sans-serif',
   },
-  tile: {
-    textAlign: 'center'
-  },
-  image: {
-    height: '100%'
-  },
-  tileBar: {
-    backgroundColor: 'rgba(0, 0, 0, 0.72)',
-    textAlign: 'left'
-  },
-  tileTitle: {
-    fontSize:'1.1em',
-    marginBottom:'5px',
-    color:'rgb(189, 222, 219)',
-    display:'block'
-  }
-}))
+  root: {},
+}));
 
-export default function Products(props){
-  const classes = useStyles()
-    return (
-      <div className={classes.root}>
-      {props.products.length > 0 ?
-        (<div className={classes.container}>
-          <GridList cellHeight={200} className={classes.gridList} cols={3}>
-          {props.products.map((product, i) => (
-            <GridListTile key={i} className={classes.tile}>
-              <Link to={"/product/"+product._id}><img className={classes.image} src={'/api/product/image/'+product._id} alt={product.name} /></Link>
-              <GridListTileBar className={classes.tileBar}
-                title={<Link to={"/product/"+product._id} className={classes.tileTitle}>{product.name}</Link>}
-                subtitle={<span>$ {product.price}</span>}
-                actionIcon={
-                  <AddToCart item={product}/>
-                }
-              />
-            </GridListTile>
-          ))}
-        </GridList></div>) : props.searched && (<Typography variant="subheading" component="h4" className={classes.title}>No products found! :(</Typography>)}
-      </div>)
-}
-Products.propTypes = {
-  products: PropTypes.array.isRequired,
-  searched: PropTypes.bool.isRequired
+export default function Products() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
+    list(signal).then((data) => {
+      if (data && data.error) {
+        console.log(data.error);
+      } else {
+        console.log(data);
+        setProducts(data);
+      }
+    });
+
+    return function cleanup() {
+      abortController.abort();
+    };
+  }, []);
+
+  const classes = useStyles();
+
+  return (
+    <Paper className={classes.root} elevation={4}>
+      <Typography variant="h6" className={classes.title}>
+        Our Products
+      </Typography>
+      <List dense>
+        {products.map((item, i) => {
+          return <Link component={RouterLink} to={"/product/" + item._id} key={i}>
+          {/* <Link component={RouterLink} to={`/products/${item._id}`} key={i}> */}
+            <ListItem button>
+              <ListItemAvatar>
+                <Avatar>
+                
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary={item.name} />
+              <ListItemSecondaryAction>
+                <IconButton>
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          </Link>
+})}
+      </List>
+    </Paper>
+  );
 }

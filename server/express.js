@@ -7,6 +7,7 @@ import helmet from 'helmet'
 //import Template from './../template.js'
 import userRoutes from './routes/user.routes.js'
 import authRoutes from './routes/auth.routes.js'
+import productRoutes from './routes/product.routes.js'
 //import devBundle from './devBundle' 
 import path from 'path'
 
@@ -17,6 +18,7 @@ app.use(express.static(path.join(CURRENT_WORKING_DIR, 'dist/app')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/', userRoutes)
+app.use('/', productRoutes)
 app.use('/', authRoutes)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -33,4 +35,3 @@ console.log(err)
 } 
 })
 export default app
-

@@ -4,11 +4,7 @@ dotenv.config();
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import config from '../config/config.js' 
-
-
 const { PORT = config.port } = process.env;
-
-// https://vitejs.dev/config/
 export default defineConfig({
   base: './',
   plugins: [react()],
@@ -19,7 +15,7 @@ export default defineConfig({
         changeOrigin: true,
       },
       '/auth': {
-        target: `${config.baseURL}:${PORT}`,
+        target: `http://${config.baseURL}:${PORT}`,
         changeOrigin: true,
       },
      
