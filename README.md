@@ -4,6 +4,4 @@
 # Misha Mansoor 
 # Lucianna Mendonca
 # Greg Komarnicky
-# Aubrey Mercado
-# Dennis Ifemade
 # Daniel Zhou
