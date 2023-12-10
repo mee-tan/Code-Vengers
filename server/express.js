@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser'
 import compress from 'compression'
 import cors from 'cors'
 import helmet from 'helmet'
-import Template from './../template.js'
+//import Template from './../template.js'
 import userRoutes from './routes/user.routes.js'
 import authRoutes from './routes/auth.routes.js'
 //import devBundle from './devBundle' 
@@ -12,7 +12,7 @@ import path from 'path'
 
 const app = express()
 const CURRENT_WORKING_DIR = process.cwd()
-console.log(CURRENT_WORKING_DIR)
+
 app.use(express.static(path.join(CURRENT_WORKING_DIR, 'dist/app')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
