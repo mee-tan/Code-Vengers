@@ -7,30 +7,48 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import codevengersimg from './../assets/images/codevengersimg.png';
 import { Link } from 'react-router-dom';
+import homeimg from './../assets/images/home.jpg';
    
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    backgroundImage: `url(${homeimg})`,
+    backgroundSize: 'cover',
+    minHeight: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   card: {
-    maxWidth: 600,
+    maxWidth: 700,
     margin: 'auto',
     marginTop: theme.spacing(5),
     color: '#444444',
+    backgroundColor: '#D9D9D6',
+  },
+  card2: {
+    maxWidth: 900,
+    margin: 'auto',
+    marginTop: theme.spacing(5),
+    color: '#444444',
+    backgroundColor: '#D9D9D6',
   },
   title: {
     padding: theme.spacing(3, 2.5, 2),
     color: theme.palette.openTitle,
   },
   media: {
-    minHeight: 300,
-    minWidth:300,
+    minHeight: 400,
+    minWidth: 400,
   },
   paragraph: {
     fontFamily: 'Oswald, sans-serif',
   },
   h1: {
     fontFamily: 'Oswald, sans-serif',
-    fontSize: '1.5rem',
+    fontSize: '2rem',
     textAlign: 'center',
+    fontStyle: 'italic',
   },
   footer: {
     backgroundColor:'#696969',
@@ -45,7 +63,8 @@ const useStyles = makeStyles(theme => ({
 export default function Home(){ 
 const classes = useStyles()
 return (
-<Card className={classes.card}>
+<div  className={classes.root}>
+<Card className={classes.card2}>
   <Card class={classes.card}>
 <CardContent>
   <Typography variant="body2"  className= {classes.h1} component="h1"> 
@@ -72,6 +91,7 @@ image={codevengersimg} title="Code Vengers"/>
   </Typography>
   </footer>
 </Card> 
+</div>
 )
 }
 

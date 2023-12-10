@@ -6,7 +6,8 @@ import cors from 'cors'
 import helmet from 'helmet'
 import Template from './../template.js'
 import userRoutes from './routes/user.routes.js'
-import authRoutes from './routes/auth.routes.js' 
+import authRoutes from './routes/auth.routes.js'
+//import devBundle from './devBundle' 
 import path from 'path'
 
 const app = express()
@@ -32,3 +33,4 @@ console.log(err)
 } 
 })
 export default app
+

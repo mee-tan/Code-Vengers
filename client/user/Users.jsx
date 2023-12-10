@@ -23,10 +23,23 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 //import ArrowForward from '@material-ui/core/ArrowForward'
 import ArrowForward from '@material-ui/icons/ArrowForward';
-//import unicornbikeImg from './../assets/images/unicornbikeImg.jpg'
+import homeimg from './../assets/images/home.jpg';
 
 const useStyles = makeStyles(theme => ({
+    root: {
+      backgroundImage: `url(${homeimg})`,
+      backgroundSize: 'cover',
+      minHeight: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     card: {
+      maxWidth: 700,
+      margin: 'auto',
+      marginTop: theme.spacing(5),
+      color: '#444444',
+      backgroundColor: '#D9D9D6',
       // Define your card styles here
     },
     textField: {
@@ -39,7 +52,8 @@ const useStyles = makeStyles(theme => ({
       // Define your submit button styles here
     },
     title: {
-      // Define your title styles here
+      fontSize: 18,
+      fontFamily: 'Oswald, sans-serif',
     },
     root: {
         // Define your root styles here

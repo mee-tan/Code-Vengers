@@ -10,6 +10,7 @@ import Profile from './user/Profile.jsx'
 import Switch from 'react'
 import PrivateRoute from './lib/PrivateRoute.jsx'
 import EditProfile from './user/EditProfile.jsx'
+import  Resources from './user/Resources.jsx'
 import Menu from './core/Menu' 
 function MainRouter() {
         return (
@@ -21,6 +22,7 @@ function MainRouter() {
   <Route path="/users" element={<Users />} />
   <Route path="/signup" element={<Signup />} />
   <Route path="/signin" element={<Signin />} />
+  <Route path="/resources" element={<Resources />} />
   <Route
     path="/user/edit/:userId"
     element={

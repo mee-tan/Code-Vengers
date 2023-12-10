@@ -13,9 +13,6 @@ console.log("Connected to the database!");
 mongoose.connection.on('error', () => {
 throw new Error(`unable to connect to database: ${config.mongoUri}`) 
 })
-/* app.get("/", (req, res) => {
-res.json({ message: "Welcome to Code Vengers application." });
-}); */
 app.listen(config.port, (err) => { 
 if (err) {
 console.log(err) 

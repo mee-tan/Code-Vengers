@@ -19,17 +19,20 @@ import auth from '../lib/auth-helper.js'
 import {read} from './api-user.js'
 import {useLocation, Navigate, Link} from 'react-router-dom'
 import { useParams } from 'react-router-dom';
+import homeimg from './../assets/images/home.jpg';
 
 const useStyles = makeStyles(theme => ({
   root: theme.mixins.gutters({
-    maxWidth: 600,
+    maxWidth: 700,
     margin: 'auto',
     padding: theme.spacing(3),
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(20),
+    backgroundColor:'white',
   }),
   title: {
     marginTop: theme.spacing(3),
-    color: theme.palette.protectedTitle
+    color: theme.palette.protectedTitle,
+    fontFamily: 'Oswald, sans-serif',
   }
 }))
 

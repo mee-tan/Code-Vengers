@@ -11,18 +11,33 @@ import auth from '../lib/auth-helper.js'
 import {read, update} from './api-user.js'
 import {Navigate} from 'react-router-dom'
 import { useParams } from 'react-router-dom';
+import homeimg from './../assets/images/home.jpg';
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    backgroundImage: `url(${homeimg})`,
+    backgroundSize: 'cover',
+    minHeight: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   card: {
     maxWidth: 600,
     margin: 'auto',
     textAlign: 'center',
     marginTop: theme.spacing(5),
-    paddingBottom: theme.spacing(2)
+    paddingBottom: theme.spacing(2),
+    backgroundColor: 'grey',
+    backgroundColor: 'grey',
+    borderWidth: '2px',
+    borderStyle: 'dashed',
+    borderColor: 'black',
   },
   title: {
     margin: theme.spacing(2),
-    color: theme.palette.protectedTitle
+    color: 'black',
+    fontFamily:'Oswald, sans-serif',
   },
   error: {
     verticalAlign: 'middle'
@@ -96,6 +111,7 @@ export default function EditProfile({ match }) {
       return (<Navigate to={'/user/' + values.userId}/>)
     }
     return (
+      <div  className={classes.root}>
       <Card className={classes.card}>
         <CardContent>
           <Typography variant="h6" className={classes.title}>
@@ -115,6 +131,7 @@ export default function EditProfile({ match }) {
           <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
         </CardActions>
       </Card>
+      </div>
     )
 }
 

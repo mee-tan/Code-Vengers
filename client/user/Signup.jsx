@@ -5,14 +5,27 @@ import { Card, CardContent, Typography, TextField, CardActions, Button, Dialog, 
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { create } from './api-user';
+import backgroundimg from './../assets/images/home.jpg';
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    backgroundImage: `url(${backgroundimg})`,
+    backgroundSize: 'cover',
+    minHeight: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   card: {
     maxWidth: 400,
     margin: '0 auto',
     marginTop: theme.spacing(3),
     padding: theme.spacing(2),
     textAlign: 'center',
+    backgroundColor: 'grey',
+    borderWidth: '2px',
+    borderStyle: 'dashed',
+    borderColor: 'black',
   },
   textField: {
     width: '100%',
@@ -27,12 +40,9 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontSize: 18,
+    fontFamily: 'Oswald, sans-serif',
   },
 }));
-
-// const create = async (user) => {
-//   return { error: null }; // Simulated API call
-// };
 
 export default function Signup() {
   const classes = useStyles();
@@ -75,11 +85,11 @@ export default function Signup() {
   };
 
   return (
-    <div>
+    <div className={classes.root}>
       <Card className={classes.card}> 
         <CardContent>
           <Typography variant="h6" className={classes.title}> 
-            Sign Up
+          Join the millions learning to code with CodeVengers for free
           </Typography>
                   
           <TextField
@@ -132,6 +142,7 @@ export default function Signup() {
         </DialogActions> 
       </Dialog>
     </div>
+
   );
 }
 

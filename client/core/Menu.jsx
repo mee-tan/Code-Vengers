@@ -36,6 +36,19 @@ const fonts = {
   fontFamily: 'Oswald, sans-serif',
   color:'black',
 };
+
+const login = {
+  marginLeft:'5',
+  fontFamily: 'Oswald, sans-serif',
+  color:'black',
+};
+
+const signup = {
+  fontFamily: 'Oswald',
+  marginLeft: 'auto',
+  color:'black',
+  marginLeft: '10',
+};
 export default function Menu() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -99,10 +112,10 @@ export default function Menu() {
           <Hidden xsDown>
             <span>
               <Link to="/signin">
-                <Button style={{ ...isActive('/signin'), ...fonts }}>Log In</Button>
+                <Button style={{ ...isActive('/signin'), ...login }}>Log In</Button>
               </Link>
             <Link to="/signup">
-              <Button style={{ ...isActive('/signup'), ...styles }}>Sign up</Button>
+              <Button style={{ ...isActive('/signup'), ...signup }}>Sign up</Button>
             </Link>
             </span>
           </Hidden>
