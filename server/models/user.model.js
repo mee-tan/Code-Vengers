@@ -7,7 +7,6 @@ import mongoose from "mongoose";
 import crypto from "crypto";
 
 const UserSchema = new mongoose.Schema({
-  //this properties will be stored in the database
   name: {
     type: String,
     trim: true,
