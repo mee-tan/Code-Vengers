@@ -14,6 +14,11 @@ import auth from '../lib/auth-helper.js'
 import {read} from './api-product.js'
 import {useLocation, Navigate, Link} from 'react-router-dom'
 import { useParams } from 'react-router-dom';
+import IconButton from '@material-ui/core/IconButton';
+import Edit from '@material-ui/icons/Edit';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import DeleteProduct from './DeleteProduct';
+
 
 const useStyles = makeStyles(theme => ({
   root: theme.mixins.gutters({
@@ -41,9 +46,15 @@ export default function ProductDetails({ match }) {
     const abortController = new AbortController()
     const signal = abortController.signal
 
-    read({
+    read(
+      {
       productId: productId
-    }, { t: jwt.token }, signal).then((data) => {
+    }, 
+      { 
+       t: jwt.token 
+       }, 
+      signal
+      ).then((data) => {
       if (data && data.error) {
         setRedirectToSignin(true)
       } else {
@@ -65,7 +76,7 @@ export default function ProductDetails({ match }) {
   return (
     <Paper className={classes.root} elevation={4}>
       <Typography variant="h6" className={classes.title}>
-        Product Details
+        Our Product
       </Typography>
       {product && product.name && product.description && (
         <List dense>
@@ -75,12 +86,19 @@ export default function ProductDetails({ match }) {
                 <Person />
               </Avatar>
             </ListItemAvatar>
-            console.log(product.description);
             <ListItemText primary={product.name} secondary={product.description} />
+            <ListItemSecondaryAction>
+                  <Link to={`/product/edit/${product._id}`}>
+                  <IconButton aria-label="Edit" color="primary">
+                    <Edit/>
+                  </IconButton>
+                </Link>
+                <DeleteProduct productId={product._id}/>
+              </ListItemSecondaryAction>
           </ListItem>
           <Divider />
           <ListItem>
-            <ListItemText primary={product.category} secondary={product.price} />
+            <ListItemText primary={product.category} secondary={`$${product.price}`}/>
           </ListItem>
         </List>
       )}

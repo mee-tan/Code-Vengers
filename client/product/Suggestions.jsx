@@ -12,7 +12,7 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 //import AddToCart from './../cart/AddToCart'
-
+ 
 const useStyles = makeStyles(theme => ({
   root: theme.mixins.gutters({
     padding: theme.spacing(1),
@@ -75,7 +75,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary
   }
 }))
-
+ 
 export default function Suggestions (props) {
   const classes = useStyles()
     return (<div>
@@ -123,8 +123,9 @@ export default function Suggestions (props) {
       </Paper>
     </div>)
 }
-
+ 
 Suggestions.propTypes = {
   products: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired
 }
+ 

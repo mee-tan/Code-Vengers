@@ -16,33 +16,33 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import auth from '../lib/auth-helper'
 import { makeStyles } from '@material-ui/core/styles';
-
+ 
 const isActive = (location, path) => {
   return location.pathname === path ? { color: '#ff4081' } : { color: 'black' };
 };
-
+ 
 const styles = {
   fontFamily: 'Oswald',
   marginLeft: 'auto',
   color:'black',
 };
-
+ 
 const signOut = {
   fontFamily : 'Oswald',
   color: 'blue',
 }
-
+ 
 const fonts = {
   fontFamily: 'Oswald, sans-serif',
   color:'black',
 };
-
+ 
 const login = {
   marginLeft:'5',
   fontFamily: 'Oswald, sans-serif',
   color:'black',
 };
-
+ 
 const signup = {
   fontFamily: 'Oswald',
   marginLeft: 'auto',
@@ -54,15 +54,15 @@ export default function Menu() {
   const location = useLocation();
   const isSmallScreen = useMediaQuery('(max-width:600px)');
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-
+ 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
   };
-
+ 
   const handleDrawerClose = () => {
     setDrawerOpen(false);
   };
-
+ 
   const drawerContent = (
     <List>
       <ListItem button onClick={() => navigate('/')}>
@@ -76,7 +76,7 @@ export default function Menu() {
       </ListItem>
     </List>
   );
-
+ 
   return (
     <AppBar position="static" style={{ backgroundColor: '#696969' }}>
       <Toolbar>
@@ -126,15 +126,15 @@ export default function Menu() {
               <Link to={`/user/${auth.isAuthenticated().user._id}`}>
                 <Button style={isActive(location, `/user/${auth.isAuthenticated().user._id}`)}> My Profile</Button>
               </Link>
-              
+             
               <Link to="/product">
-                <Button style={{...isActive('/products'), ...signup}}> Products</Button>
+                <Button style={{...isActive('/products'), ...signup}}>Create Products</Button>
               </Link>  
-              
+             
               <Link to="/products">
                 <Button style={{ ...isActive('/products'), ...fonts }}>Our Products</Button>
               </Link>    
-              
+             
               <Button
                 color="inherit"
                 style={signOut}

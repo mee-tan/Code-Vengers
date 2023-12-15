@@ -1,27 +1,26 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import config from '../config/config.js' 
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import config from "../config/config.js";
 const { PORT = config.port } = process.env;
 export default defineConfig({
-  base: './',
+  base: "./",
   plugins: [react()],
   server: {
     proxy: {
-      '/api': {
+      "/api": {
         target: `http://${config.baseURL}:${PORT}`,
         changeOrigin: true,
       },
-      '/auth': {
+      "/auth": {
         target: `http://${config.baseURL}:${PORT}`,
         changeOrigin: true,
       },
-     
     },
   },
   build: {
-    outDir: '../dist/app',
+    outDir: "../dist/app",
   },
 });
